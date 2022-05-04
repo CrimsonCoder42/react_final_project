@@ -1,25 +1,51 @@
-import logo from './logo.svg';
+import {React, useState} from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css';
 
+import Navbar from "./components/navbar"
+import Home from './pages/home';
+import Settings from './pages/settings';
+import Stats from './pages/stats';
+
+// change 100 by importing from settings route 
+
+
 function App() {
+
+  const [gameNumber, setGameNumber] = useState(0);
+  const [playerCount, setPlayerCount] = useState(0);
+  const [winCount, setWinCount] = useState(0);
+  const [maxGuess, setMaxGuess] = useState(4);
+  const [numPlayed, setNumPlayed] = useState([]);
+  const [endRange, setEndRange]=useState(100);
+
+  const randomNumber=()=>{
+      return Math.floor(Math.random() * endRange) + 1;
+  }
+  const average =()=>{
+    
+    const num = winCount;
+    const avg = playerCount/num;
+    console.log ("average:",num, playerCount, avg);
+    return avg;
+  }
   return (
+    
+    <Router>
+    <div>
+      <Navbar />
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+      <Routes>
+      <Route path="/" element={ <Home gameNumber={randomNumber()} setPlayerCount={setPlayerCount} setWinCount={setWinCount} winCount={winCount} endRange={endRange} setNumPlayed ={setNumPlayed} maxGuess={maxGuess}/> } />
+      <Route path="/settings" element={ <Settings maxGuess={maxGuess} setMaxGuess={setMaxGuess} endRange={endRange} setEndRange={setEndRange}/> }/>
+      <Route path="/stats" element={ <Stats playerCount={playerCount} winCount={winCount} average={average()}/> }/>
+      </Routes>
+
     </div>
-  );
-}
+    </div>
+    </Router>
+)}
+
 
 export default App;
