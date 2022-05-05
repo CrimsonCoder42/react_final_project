@@ -3,8 +3,7 @@ import { useState } from 'react';
 
 
 function Home(props) {
-    //const 
-//UseState to handle playerNum, gameNumber, numPlayed, and how many guess. 
+   
   const [gameNumber, setGameNumber] = useState(props.gameNumber);
   const [disable, setDisable] = useState(false);
   const [gameMessage, setGameMessage] = useState(" ")
@@ -13,8 +12,56 @@ function Home(props) {
   const [winCount2, setWinCount2] = useState(props.winCount);
   const [numPlayed, setNumPlayed] = useState([]);
 
-  const playerGuessed = (n) => {
-    setPlayerNum(n.target.value)
+  init();
+  const data=[];
+  function init() {
+    
+    const sheetId = '1UFj3u1xT2_pdMENQP8qs8ck-EEp_tuTtV5zn6XP0E7k';
+    const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
+    const sheetName = 'QandA';
+    
+    const query = encodeURIComponent('Select *')
+    const url = `${base}&sheet=${sheetName}&tq=${query}`
+      fetch(url)
+          .then(res => res.text())
+          .then(rep => {
+              //Remove additional text and extract only JSON:
+              const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
+              let rows = jsonData.table.rows
+              let radom = Math.floor(Math.random() * rows.length)
+              let rRow = rows[radom].c;
+              const results = rRow.filter(element => {
+                  return element !== null;
+                });
+             for(let i = 0; i < results.length; i++ ) {
+                 data.push(results[i].v) 
+             }
+             setPlay(data)
+          })
+  
+  }
+
+  function setPlay(arr) {
+      let newArray = arr.slice(1, -2)
+
+      document.getElementById("questDisplay").innerText = `${arr[0]}`
+      let btnArr = ['A','B','C','D']
+      btnArr.forEach(ele => {
+        document.getElementById(ele).innerText = ''
+        document.getElementById(ele).className = 'hidden'
+      })
+
+      for(let i = 0; i < newArray.length; ++i ) {
+        document.getElementById(btnArr[i]).innerText = `${newArray[i]}`
+        document.getElementById(btnArr[i]).className = 'btn'
+    }
+      
+  }
+
+
+
+  const playerGuessed = (e) => {
+    console.log(e.target.id);
   }
 
   function visibleMessage(color) {
@@ -98,13 +145,13 @@ function Home(props) {
         <div>
     <div id="game-message"> <div id="game-text"><h1> { gameMessage } </h1><button onClick={playAgain}>Play again?</button></div> </div>
 
-    <div className="questions"><h1>Hello</h1></div>
+    <div id="questDisplay" className="questions"></div>
+    <div className="board"> 
         
-    <div className="answer-buttons" > 
-        <div className= "ansBtn" id="A"><h3>A</h3></div>
-        <div className= "ansBtn" id="B"><h3>B</h3></div>
-        <div className= "ansBtn" id="C"><h3>C</h3></div>
-        <div className= "ansBtn" id="D"><h3>D</h3></div>
+        <button onClick={playerGuessed} type="button" id='A' className="btn"></button>
+        <button onClick={playerGuessed} type="button" id='B' className="btn"></button>
+        <button onClick={playerGuessed} type="button" id='C' className="btn"></button>
+        <button onClick={playerGuessed} type="button" id='D' className="btn"></button>
         
     </div>
 

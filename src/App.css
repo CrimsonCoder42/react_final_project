@@ -1,31 +1,38 @@
 .App {
   text-align: center;
   position: absolute;
-  top: 25%;
-  left: 40%;
+  top: 35%;
+  left: 30%;
   color: white;
   
 }
-
 
 ul {
   list-style-type: none;
 }
 
 
+.btn{
+  background-color:#FAE546;
+  color: black;
+  
+}
+
 .guess {
   margin-left: 5px;
 }
 
-.ansBtn {
-  boder
+.board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, auto));
+  grid-auto-rows: 2em;
+  gap: 2em;
 }
 
-.answer-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border: 2px white;
+.questions {
+  grid-column: span 2;
 }
+
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #3A7EFD;
@@ -42,7 +49,7 @@ ul {
 
 /* Change the color of links on hover */
 .topnav li:hover {
-  background-color: #3443E3;
+  background-color: #3A95FD;
 }
 
 /* Add a color to the active/current link */
