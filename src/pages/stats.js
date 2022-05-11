@@ -7,8 +7,10 @@ const Stats = (props) => {
         // # guessed correctly & Average number of guesses needed 
     <div>
     <h1> Stats </h1>
-    <p> Guessed correctly: { props.winCount } </p>
-    <p> Average guesses needed: { props.average } </p>
+    <p> Correct: { props.corrCount } </p>
+    <p> Percentage of correct answers: { props.average }% </p>
+    <p> Wrong: { props.wrongCount } </p>
+    
     
     </div>)
 }

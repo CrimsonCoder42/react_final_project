@@ -17,7 +17,7 @@ const Settings = (props) => {
         setEndRange(val);
         props.setEndRange(val);
     }
-    
+    // add toggle to redo incorrect questions
     return(<div>
     
         <h1> Settings </h1>

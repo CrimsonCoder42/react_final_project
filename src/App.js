@@ -11,15 +11,16 @@ function App() {
 
   const [gameNumber, setGameNumber] = useState(0);
   const [playerCount, setPlayerCount] = useState(0);
-  const [winCount, setWinCount] = useState(0);
+  const [corrCount, setcorrCount] = useState(0);
+  const [wrongCount, setwrongCount] = useState(0);
   const [maxGuess, setMaxGuess] = useState(4);
   const [numPlayed, setNumPlayed] = useState([]);
   const [endRange, setEndRange]=useState(100);
  
   const average =()=>{
     
-    const num = winCount;
-    const avg = playerCount/num;
+    const num = corrCount;
+    const avg = (num/playerCount) * 100;
     console.log ("average:",num, playerCount, avg);
     return avg;
   }
@@ -34,9 +35,9 @@ function App() {
     <div className="App">
     
       <Routes>
-      <Route path="/" element={ <Home setPlayerCount={setPlayerCount} setWinCount={setWinCount} winCount={winCount} endRange={endRange} setNumPlayed ={setNumPlayed} maxGuess={maxGuess}/> } />
+      <Route path="/" element={ <Home setPlayerCount={setPlayerCount} setcorrCount={setcorrCount} corrCount={corrCount} setwrongCount={setwrongCount} wrongCount={wrongCount} endRange={endRange} setNumPlayed ={setNumPlayed} maxGuess={maxGuess}/> } />
       <Route path="/settings" element={ <Settings maxGuess={maxGuess} setMaxGuess={setMaxGuess} endRange={endRange} setEndRange={setEndRange}/> }/>
-      <Route path="/stats" element={ <Stats playerCount={playerCount} winCount={winCount} average={average()}/> }/>
+      <Route path="/stats" element={ <Stats playerCount={playerCount} corrCount={corrCount} wrongCount={wrongCount} average={average()}/> }/>
       </Routes>
 
     </div>
