@@ -2,13 +2,16 @@ import React from "react"
 import Home from './home';
 
 
-const Stats = (props) => {
 
+const Stats = (props) => {
+  //Calculate average of each individual subject to identify weakest areas.
     const average =(correct, incorrect)=>{
         let total = correct + incorrect
-        const avg = Math.floor((correct/(total)) * 100);
+        const avg = parseInt(Math.floor((correct/(total)) * 100));
+        var newAvg = (isNaN(avg) ? 0 : avg);
         console.log ("average:",avg);
-        return avg;
+        return newAvg
+        
       }
 
     return(

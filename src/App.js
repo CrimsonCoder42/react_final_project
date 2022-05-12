@@ -8,6 +8,7 @@ import Stats from './pages/stats';
 
 function App() {
 
+  // APP the main holder of state so it can distribute accordingly. 
   const [playerCount, setPlayerCount] = useState(0);
   const [corrCount, setcorrCount] = useState(0);
   const [wrongCount, setwrongCount] = useState(0);

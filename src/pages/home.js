@@ -106,7 +106,6 @@ function Home(props) {
         setGameMessage("Incorrect")
   }
         setNumPlayed( numPlayed + 1)
-        console.log("numPlayed", numPlayed)
    }
 
    //Locates all elements by ID and changes elements className or innertext.
