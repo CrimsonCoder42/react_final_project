@@ -4,27 +4,27 @@ import './App.css';
 
 import Navbar from "./components/navbar"
 import Home from './pages/home';
-import Settings from './pages/settings';
 import Stats from './pages/stats';
 
 function App() {
 
-  const [gameNumber, setGameNumber] = useState(0);
   const [playerCount, setPlayerCount] = useState(0);
   const [corrCount, setcorrCount] = useState(0);
   const [wrongCount, setwrongCount] = useState(0);
-  const [maxGuess, setMaxGuess] = useState(4);
   const [numPlayed, setNumPlayed] = useState([]);
   const [endRange, setEndRange]=useState(100);
- 
-  const average =()=>{
-    
-    const num = corrCount;
-    const avg = (num/playerCount) * 100;
-    console.log ("average:",num, playerCount, avg);
-    return avg;
-  }
- 
+  const [questSubj, setquestSubj] = useState(" ");
+  const [cssCorr, setCssCorr] = useState(0);
+  const [cssWrong, setCssWrong] = useState(0);
+  const [htmlCorr, setHtmlCorr] = useState(0);
+  const [htmlWrong, setHtmlWrong] = useState(0);
+  const [jsCorr, setJsCorr] = useState(0);
+  const [jsWrong, setJsWrong] = useState(0);
+  const [reactCorr, setReactCorr] = useState(0);
+  const [reactWrong, setReactWrong] = useState(0);
+
+
+  
   
   return (
     
@@ -35,9 +35,42 @@ function App() {
     <div className="App">
     
       <Routes>
-      <Route path="/" element={ <Home setPlayerCount={setPlayerCount} setcorrCount={setcorrCount} corrCount={corrCount} setwrongCount={setwrongCount} wrongCount={wrongCount} endRange={endRange} setNumPlayed ={setNumPlayed} maxGuess={maxGuess}/> } />
-      <Route path="/settings" element={ <Settings maxGuess={maxGuess} setMaxGuess={setMaxGuess} endRange={endRange} setEndRange={setEndRange}/> }/>
-      <Route path="/stats" element={ <Stats playerCount={playerCount} corrCount={corrCount} wrongCount={wrongCount} average={average()}/> }/>
+      <Route path="/" element={ 
+      <Home 
+      setPlayerCount={setPlayerCount} 
+      setcorrCount={setcorrCount} 
+      corrCount={corrCount} 
+      setwrongCount={setwrongCount} 
+      wrongCount={wrongCount} 
+      endRange={endRange} 
+      setNumPlayed ={setNumPlayed} 
+      questSubj={questSubj} 
+      setquestSubj={setquestSubj}
+      setCssCorr={setCssCorr} cssCorr={cssCorr} 
+      setCssWrong={setCssWrong} cssWrong={cssWrong} 
+      setHtmlCorr={setHtmlCorr} htmlCorr={htmlCorr} 
+      setHtmlWrong={setHtmlWrong} htmlWrong={htmlWrong} 
+      setJsCorr={setJsCorr} jsCorr={jsCorr}
+      setJsWrong={setJsWrong} jsWrong={jsWrong} 
+      setReactCorr={setReactCorr} reactCorr={reactCorr} 
+      setReactWrong={setReactWrong}  reactWrong={reactWrong}   
+      /> 
+      } />
+      <Route path="/stats" element={ 
+      <Stats 
+      playerCount={playerCount} 
+      corrCount={corrCount} 
+      wrongCount={wrongCount} 
+      questSubj={questSubj} 
+      cssCorr={cssCorr}
+      cssWrong={cssWrong}
+      htmlCorr={htmlCorr}
+      htmlWrong={htmlWrong}
+      jsCorr={jsCorr}
+      jsWrong={jsWrong}
+      reactCorr={reactCorr}
+      reactWrong={reactWrong} /> 
+      }/>
       </Routes>
 
     </div>

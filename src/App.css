@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 10%;
   right: 10%;
   color: white;
@@ -119,4 +119,57 @@ ul {
   position: absolute;
   left: 5%;
   text-align: center;
+}
+
+#play{
+  width: 40%;
+  padding: 10px;
+  margin: 0 10px 20px 10px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(#20E863, #5AE820);
+  border: 1px solid white;
+  border-radius: 15px;
+  font-weight: 300;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.green {
+  width: 40%;
+  padding: 10px;
+  margin: 0 10px 20px 10px;
+  text-align: center;
+  color: white;
+  background: #30FF3B;
+  border: 1px solid white;
+  border-radius: 15px;
+  font-weight: 300;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.red {
+  width: 40%;
+  padding: 10px;
+  margin: 0 10px 20px 10px;
+  text-align: center;
+  color: white;
+  background: #FF341E;
+  border: 1px solid white;
+  border-radius: 15px;
+  font-weight: 300;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#statBoard {
+    margin: 20px auto;
+    width:400px;
+    height:400px;
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-row: auto auto;
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
 }
